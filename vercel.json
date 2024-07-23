@@ -8,8 +8,8 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "/",
+            "src": "/family-api/(.*)",
+            "dest": "/src/app/family-api/$1",
             "methods": [
                 "GET",
                 "POST",
@@ -17,6 +17,27 @@
                 "PATCH",
                 "DELETE",
                 "OPTIONS"
+            ]
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/src/app/$1",
+            "methods": [
+                "GET"
+            ]
+        },
+        {
+            "src": "/assets/(.*)",
+            "dest": "/public/assets/$1",
+            "methods": [
+                "GET"
+            ]
+        },
+        {
+            "src": "/icons/(.*)",
+            "dest": "/public/icons/$1",
+            "methods": [
+                "GET"
             ]
         }
     ]
