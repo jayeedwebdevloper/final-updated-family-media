@@ -1,0 +1,30 @@
+.fc .fc-button {
+    text-transform: capitalize !important;
+    font-size: 12px !important;
+    background-color: rgb(33, 107, 255);
+    border: 0;
+}
+
+.fc .fc-button-active {
+    background-color: rgb(27, 6, 215) !important;
+}
+
+.fc .fc-button:hover {
+    background-color: rgb(27, 6, 215);
+}
+
+.fc .fc-today-button {
+    text-transform: capitalize !important;
+    font-size: 12px !important;
+    background-color: rgb(33, 107, 255);
+    border: 0;
+}
+
+.fc .fc-today-button:hover {
+    background-color: rgb(27, 6, 215);
+}
+
+.fc-event-title {
+    text-wrap: wrap !important;
+    padding: 0 3px !important;
+}

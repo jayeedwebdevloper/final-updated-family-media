@@ -1,0 +1,5 @@
+/* lighting.css or your custom CSS file */
+.light-box-custom video {
+    width: 95% !important;
+    height: auto !important;
+}
