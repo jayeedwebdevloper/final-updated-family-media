@@ -3,11 +3,15 @@ import React, { useEffect, useState } from 'react';
 import './FamilyTree.css';
 import TreeMake from './TreeMake';
 import toast from 'react-hot-toast';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../Authentication/AuthenticationParent';
 
 const Tree = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [treeData, setTreeData] = useState<any[]>([]);
     const [refetch, setRefetch] = useState(0);
+    const [loader, setLoader] = useState(true);
+    const [userInfo, setUserInfo] = useState<any>();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,6 +33,17 @@ const Tree = () => {
 
         fetchData();
     }, [refetch]);
+
+    useEffect(() => {
+        const Logged = onAuthStateChanged(auth, (user) => {
+            setUserInfo({ user });
+            setLoader(false);
+            triggerRefetch()
+        })
+        return () => {
+            Logged();
+        }
+    }, []);
 
     const triggerRefetch = () => {
         setRefetch(refetch + 1);
@@ -118,7 +133,7 @@ const Tree = () => {
                         </form>
                     </div>
                 )}
-                <button onClick={() => setIsOpen(true)} className='text-xs bg-blue-500 hover:bg-blue-600 transition-all duration-300 py-2 px-3 text-white rounded-md shadow-md'>Add Family</button>
+                <button disabled={!userInfo?.user?.uid} onClick={() => setIsOpen(true)} className='text-xs bg-blue-500 hover:bg-blue-600 transition-all duration-300 py-2 px-3 text-white rounded-md shadow-md'>Add Family</button>
             </div>
             <TreeMake data={treeData} rootId={treeData[0]?._id} />
         </div>

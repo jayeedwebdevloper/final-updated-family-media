@@ -58,7 +58,7 @@ export default function AllPost(props: PropsType) {
 
     return (
         <div className='posts bg-white shadow-md rounded m-1 mt-2'>
-            {allPosts?.map((post: any & { user: any }, i: number) => (
+            {allPosts?.slice().reverse().map((post: any & { user: any }, i: number) => (
                 <div key={i} className='px-3 py-4'>
                     <div className="header flex justify-between">
                         <div className='w-auto flex gap-4'>

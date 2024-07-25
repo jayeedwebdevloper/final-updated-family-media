@@ -122,6 +122,8 @@ export default function Header() {
                 const response = await fetch('/family-api/settings/logo');
                 const data = await response.json();
                 setFaviconUrl(data.faviconUrl);
+                triggerRefetch();
+                navigate.push('/');
             } catch (error) {
                 console.error('Error fetching favicon:', error);
             }
@@ -134,8 +136,6 @@ export default function Header() {
     return (
         <header className='fixed top-0 left-0 right-0 w-full shadow pt-3 pb-4 z-[200] bg-white'>
             <Toaster />
-
-
             <div className="container md:px-6 mx-auto">
                 <nav className='flex justify-between relative px-3 items-center'>
                     <div className="logo w-auto">
