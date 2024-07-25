@@ -123,7 +123,6 @@ export default function Header() {
                 const data = await response.json();
                 setFaviconUrl(data.faviconUrl);
                 triggerRefetch();
-                navigate.push('/');
             } catch (error) {
                 console.error('Error fetching favicon:', error);
             }
